@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AltCalculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <div id="calculator">
+      <div class="theme-toggle">
+        <button onclick="toggleTheme()">Toggle Theme</button>
+        <button onclick="clearHistory()">Clear History</button>
+      </div>
+      <input type="text" readonly id="display" data-value="0" value="0" />
+      <div id="history-container">
+        <div id="history"></div>
+        <button class="clear" data-value="clear">C</button>
+      </div>
+
+      <div id="digit-buttons-div">
+        <button class="digit-button" data-value="1">1</button>
+        <button class="digit-button" data-value="2">2</button>
+        <button class="digit-button" data-value="3">3</button>
+        <button class="digit-button yellow" data-value="*">&times;</button>
+        <button class="digit-button yellow" data-value="/">&divide;</button>
+
+        <button class="digit-button" data-value="4">4</button>
+        <button class="digit-button" data-value="5">5</button>
+        <button class="digit-button" data-value="6">6</button>
+        <button class="digit-button yellow" data-value="+">&plus;</button>
+        <button class="digit-button yellow" data-value="-">&minus;</button>
+
+        <button class="digit-button" data-value="7">7</button>
+        <button class="digit-button" data-value="8">8</button>
+        <button class="digit-button" data-value="9">9</button>
+        <button class="digit-button yellow" data-value="%">&percnt;</button>
+        <button class="digit-button yellow" data-value="**">&xwedge;</button>
+
+        <button class="digit-button" data-value="0">0</button>
+        <button class="digit-button" data-value=".">&period;</button>
+        <button class="digit-button" data-value="backspace">&#9003;</button>
+        <button class="digit-button equal-button" data-value="=">
+          &equals;
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
