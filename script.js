@@ -64,6 +64,12 @@ window.clearHistory = function () {
 
 window.toggleTheme = function () {
   document.body.classList.toggle("light-theme");
+  var x = document.getElementById("myMode");
+  if (x.innerHTML === "Light") {
+    x.innerHTML = "Dark";
+  } else {
+    x.innerHTML = "Light";
+  }
 };
 
 // Centralized button handler

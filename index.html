@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AltCalculator</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="index.js" defer></script>
+    <script src="script.js" defer></script>
   </head>
   <body>
     <div id="calculator">
       <div class="theme-toggle">
-        <button onclick="toggleTheme()">Toggle Theme</button>
+        <section class="toggle">
+          <label class="switch" class="toggle">
+            <input type="checkbox" checked onclick="toggleTheme()" />
+            <span class="slider round"></span>
+          </label>
+          <span id="myMode">Light</span>
+        </section>
         <button onclick="clearHistory()">Clear History</button>
       </div>
       <input type="text" readonly id="display" data-value="0" value="0" />
