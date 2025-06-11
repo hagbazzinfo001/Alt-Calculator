@@ -30,7 +30,12 @@ body {
   width: 65px;
   height: 45px;
   flex-shrink: 0;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
   border-radius: 35px;
   font-size: 24px;
   color: #fff;

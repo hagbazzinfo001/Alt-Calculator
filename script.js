@@ -21,19 +21,24 @@ function clearDisplay() {
   currentInput = "";
   updateDisplay();
 }
+
 function appendDot() {
-  if (!currentInput.includes(".")) {
+  const lastNumber = currentInput.split(/[\+\-\*\/\%\**]/).pop();
+  if (!lastNumber.includes(".")) {
     currentInput += ".";
     updateDisplay();
   }
 }
+
 function backspace() {
   currentInput = currentInput.slice(0, -1);
   updateDisplay();
 }
 function calculateResult() {
   try {
-    const result = eval(currentInput);
+    // Replace ^ with ** for exponentiation
+    const expression = currentInput.replace(/\^/g, "**");
+    const result = eval(expression);
     const entry = `${currentInput} = ${result}`;
     const div = document.createElement("div");
     div.textContent = entry;
@@ -49,17 +54,20 @@ function calculateResult() {
 function saveToHistory(entry) {
   let logs = JSON.parse(localStorage.getItem("calc-history")) || [];
   logs.push(entry);
+  if (logs.length > 10) {
+    logs = logs.slice(-10); // Keep only the last 10
+  }
   localStorage.setItem("calc-history", JSON.stringify(logs));
 }
-
 function loadHistory() {
   let logs = JSON.parse(localStorage.getItem("calc-history")) || [];
   history.innerHTML = logs.map((item) => `<div>${item}</div>`).join("");
 }
-
 window.clearHistory = function () {
-  localStorage.removeItem("calc-history");
-  history.innerHTML = "";
+  if (confirm("Are you sure you want to clear all history?")) {
+    localStorage.removeItem("calc-history");
+    history.innerHTML = "";
+  }
 };
 
 window.toggleTheme = function () {
@@ -77,7 +85,6 @@ document.querySelectorAll("button[data-value]").forEach((btn) => {
   btn.addEventListener("click", () => {
     const value = btn.dataset.value;
     if (!value) return;
-
     switch (value) {
       case "=":
         return calculateResult();
@@ -90,7 +97,7 @@ document.querySelectorAll("button[data-value]").forEach((btn) => {
       case "*":
       case "/":
       case "%":
-      case "**":
+      case "^":
         return appendOperator(value);
       case ".":
         return appendDot();
@@ -99,7 +106,6 @@ document.querySelectorAll("button[data-value]").forEach((btn) => {
     }
   });
 });
-
 // Keyboard support
 document.addEventListener("keydown", (e) => {
   if (!isNaN(e.key)) appendNumber(e.key);

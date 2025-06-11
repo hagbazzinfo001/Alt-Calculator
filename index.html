@@ -11,7 +11,7 @@
     <div id="calculator">
       <div class="theme-toggle">
         <section class="toggle">
-          <label class="switch" class="toggle">
+          <label class="switch toggle">
             <input type="checkbox" checked onclick="toggleTheme()" />
             <span class="slider round"></span>
           </label>
@@ -19,7 +19,7 @@
         </section>
         <button onclick="clearHistory()">Clear History</button>
       </div>
-      <input type="text" readonly id="display" data-value="0" value="0" />
+      <input type="text" readonly id="display" value="0" />
       <div id="history-container">
         <div id="history"></div>
         <button class="clear" data-value="clear">C</button>
@@ -42,7 +42,7 @@
         <button class="digit-button" data-value="8">8</button>
         <button class="digit-button" data-value="9">9</button>
         <button class="digit-button yellow" data-value="%">&percnt;</button>
-        <button class="digit-button yellow" data-value="**">&xwedge;</button>
+        <button class="digit-button yellow" data-value="^">&Hat;</button>
 
         <button class="digit-button" data-value="0">0</button>
         <button class="digit-button" data-value=".">&period;</button>
